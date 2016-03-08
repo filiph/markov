@@ -4,7 +4,7 @@ description:
   punctuation. Tuned for tweets.
 version: 0.0.2
 author: Filip Hracek <filip.hracek@gmail.com>
-#homepage: https://www.example.com
+homepage: https://github.com/filiph/markov
 
 environment:
   sdk: '>=1.0.0 <2.0.0'
