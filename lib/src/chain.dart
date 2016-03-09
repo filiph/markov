@@ -29,7 +29,7 @@ class MarkovChain {
       String nextWord = distribution.pick(_random);
       var nextToken = new Token(nextWord);
       yield nextToken;
-      currentState = currentState.createNext(nextToken);
+      currentState = new TokenSequence.fromPrevious(currentState, nextToken);
     }
   }
 
