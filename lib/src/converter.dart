@@ -7,6 +7,7 @@ import 'package:markov/src/token.dart';
 import 'package:markov/src/token_sequence.dart';
 import 'package:string_scanner/string_scanner.dart';
 
+/// DEPRECATED. Use MarkovChainGenerator instead.
 class MarkovConverter extends Converter<List<String>, MarkovChain> {
   static final _word = new RegExp(r"[^\s\.!?,:]+");
   static final _whiteSpace = new RegExp(r"\s+");

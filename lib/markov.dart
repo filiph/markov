@@ -7,7 +7,7 @@
 library markov;
 
 export 'src/chain.dart';
-export 'src/converter.dart';
+export 'src/chain_generator.dart';
 export 'src/format.dart';
 export 'src/token.dart';
 export 'src/token_sequence.dart';

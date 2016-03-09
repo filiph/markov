@@ -5,19 +5,21 @@ library markov.test;
 
 import 'package:markov/markov.dart';
 import 'package:test/test.dart';
+import 'dart:async';
 
 void main() {
   group('Converter', () {
-    MarkovConverter converter;
+    MarkovChainGenerator converter;
     MarkovChain chain;
 
     group('"tick tock" of first order', () {
-      setUp(() {
-        converter = new MarkovConverter(1);
-        chain = converter.convert([
+      setUp(() async {
+        converter = new MarkovChainGenerator(1);
+        converter.addStream(new Stream.fromIterable([
           "tick tock tick tock tick tock tick tock",
           "tick tock tick tock tick tock"
-        ]);
+        ]));
+        chain = await converter.close();
       });
 
       test('always generates "tock" after "tick"', () {
