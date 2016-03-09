@@ -23,7 +23,7 @@ void main() {
       test('always generates "tock" after "tick"', () {
         var start = new TokenSequence.fromString("tick");
         for (int i = 0; i < 1000; i++) {
-          expect(chain.generate(currentState: start).first.string, "tock");
+          expect(chain.generate(state: start).first.string, "tock");
         }
       });
       test('generates "tick" or EOL after "tock"', () {
@@ -31,7 +31,7 @@ void main() {
         bool generatedAtLeastOneTick = false;
         bool generatedAtLeastOneEOL = false;
         for (int i = 0; i < 1000; i++) {
-          var string = chain.generate(currentState: start).first.string;
+          var string = chain.generate(state: start).first.string;
           expect(string, anyOf("tick", "\n"));
           if (string == "tick") generatedAtLeastOneTick = true;
           if (string == "\n") generatedAtLeastOneEOL = true;

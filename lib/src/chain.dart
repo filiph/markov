@@ -18,18 +18,18 @@ class MarkovChain {
 
   Map get asMap => _edges;
 
-  Iterable<Token> generate({TokenSequence currentState: null}) sync* {
-    if (currentState == null) {
-      currentState = new TokenSequence(
+  Iterable<Token> generate({TokenSequence state: null}) sync* {
+    if (state == null) {
+      state = new TokenSequence(
           new List.filled(order, "\n").map((string) => new Token(string)));
     }
 
     while (true) {
-      ProbabilityDistribution<String> distribution = _edges[currentState];
+      ProbabilityDistribution<String> distribution = _edges[state];
       String nextWord = distribution.pick(_random);
       var nextToken = new Token(nextWord);
       yield nextToken;
-      currentState = new TokenSequence.fromPrevious(currentState, nextToken);
+      state = new TokenSequence.fromPrevious(state, nextToken);
     }
   }
 
