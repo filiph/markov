@@ -1,0 +1,36 @@
+.matrioska {
+  margin: 3em auto;
+  max-width: 520px;
+}
+
+h1 {
+  font-family: "Lucida Grande", Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.loading {
+  position: relative;
+}
+
+.loading .blurred {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
+  filter: blur(5px);
+  width: 100%;
+}
+
+.loading div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.loading div img {
+  display: block;
+  margin: 20% auto;
+}
