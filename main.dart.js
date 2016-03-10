@@ -318,7 +318,7 @@ y=Object.getPrototypeOf(a)
 if(y==null||y===Object.prototype)return C.fz
 else return C.hw}return w},
 r:{"^":"c;",
-u:function(a,b){return a===b},
+v:function(a,b){return a===b},
 gM:function(a){return H.bw(a)},
 l:["kv",function(a){return H.ej(a)}],
 fO:["ku",function(a,b){throw H.b(P.kD(a,b.gjf(),b.gjq(),b.gji(),null))},null,"god",2,0,null,42],
@@ -330,7 +330,7 @@ gM:function(a){return a?519018:218159},
 gS:function(a){return C.hr},
 $isar:1},
 jS:{"^":"r;",
-u:function(a,b){return null==b},
+v:function(a,b){return null==b},
 l:function(a){return"null"},
 gM:function(a){return 0},
 gS:function(a){return C.hg},
@@ -833,7 +833,7 @@ Av:{"^":"c;a,b,c,d,e,f,r,x,y,z,Q,ch,cx",p:{
 Aw:[function(a){var z=P.C(["command","print","msg",a])
 return new H.cd(!0,P.cJ(null,P.q)).aN(z)},null,null,2,0,null,77]}},
 hG:{"^":"c;af:a>,b,c,nX:d<,n6:e<,f,r,nO:x?,bb:y<,nd:z<,Q,ch,cx,cy,db,dx",
-iE:function(a,b){if(!this.f.u(0,a))return
+iE:function(a,b){if(!this.f.v(0,a))return
 if(this.Q.E(0,b)&&!this.y)this.y=!0
 this.dC()},
 oB:function(a){var z,y,x,w,v,u
@@ -853,7 +853,7 @@ v[w]=x
 if(w===y.c)y.hW();++y.d}this.y=!1}this.dC()},
 mL:function(a,b){var z,y,x
 if(this.ch==null)this.ch=[]
-for(z=J.m(a),y=0;x=this.ch,y<x.length;y+=2)if(z.u(a,x[y])){z=this.ch
+for(z=J.m(a),y=0;x=this.ch,y<x.length;y+=2)if(z.v(a,x[y])){z=this.ch
 x=y+1
 if(x>=z.length)return H.d(z,x)
 z[x]=b
@@ -861,26 +861,26 @@ return}x.push(a)
 this.ch.push(b)},
 oz:function(a){var z,y,x
 if(this.ch==null)return
-for(z=J.m(a),y=0;x=this.ch,y<x.length;y+=2)if(z.u(a,x[y])){z=this.ch
+for(z=J.m(a),y=0;x=this.ch,y<x.length;y+=2)if(z.v(a,x[y])){z=this.ch
 x=y+2
 z.toString
 if(typeof z!=="object"||z===null||!!z.fixed$length)H.t(new P.G("removeRange"))
 P.bJ(y,x,z.length,null,null,null)
 z.splice(y,x-y)
 return}},
-kl:function(a,b){if(!this.r.u(0,a))return
+kl:function(a,b){if(!this.r.v(0,a))return
 this.db=b},
 nI:function(a,b,c){var z=J.m(b)
-if(!z.u(b,0))z=z.u(b,1)&&!this.cy
+if(!z.v(b,0))z=z.v(b,1)&&!this.cy
 else z=!0
 if(z){J.cq(a,c)
 return}z=this.cx
 if(z==null){z=P.df(null,null)
 this.cx=z}z.av(new H.Ak(a,c))},
 nH:function(a,b){var z
-if(!this.r.u(0,a))return
+if(!this.r.v(0,a))return
 z=J.m(b)
-if(!z.u(b,0))z=z.u(b,1)&&!this.cy
+if(!z.v(b,0))z=z.v(b,1)&&!this.cy
 else z=!0
 if(z){this.fI()
 return}z=this.cx
@@ -1018,7 +1018,7 @@ if(z.gn6()===y){z.nG(x)
 return}y=init.globalState.f
 w="receive "+H.f(b)
 y.a.av(new H.dy(z,new H.Ay(this,x),w))},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return b instanceof H.eL&&J.v(this.b,b.b)},
 gM:function(a){return this.b.geX()}},
 Ay:{"^":"a:1;a,b",
@@ -1031,7 +1031,7 @@ y=new H.cd(!0,P.cJ(null,P.q)).aN(z)
 if(init.globalState.x===!0){init.globalState.Q.toString
 self.postMessage(y)}else{x=init.globalState.ch.i(0,this.b)
 if(x!=null)x.postMessage(y)}},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return b instanceof H.hK&&J.v(this.b,b.b)&&J.v(this.a,b.a)&&J.v(this.c,b.c)},
 gM:function(a){var z,y,x
 z=J.dP(this.b,16)
@@ -1101,7 +1101,7 @@ z=(~z>>>0)+(z<<15>>>0)&4294967295
 z=((z^z>>>12)>>>0)*5&4294967295
 z=((z^z>>>4)>>>0)*2057&4294967295
 return(z^z>>>16)>>>0},
-u:function(a,b){var z,y
+v:function(a,b){var z,y
 if(b==null)return!1
 if(b===this)return!0
 if(b instanceof H.bW){z=this.a
@@ -1971,7 +1971,7 @@ l:function(a){var z=this.$static_name
 if(z==null)return"Closure of unknown static method"
 return"Closure '"+z+"'"}},
 fC:{"^":"lk;a,b,c,d",
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 if(this===b)return!0
 if(!(b instanceof H.fC))return!1
 return this.a===b.a&&this.b===b.b&&this.c===b.c},
@@ -2055,7 +2055,7 @@ y=function(b,c){return b.replace(/[^<,> ]+/g,function(d){return c[d]||d})}(this.
 this.b=y
 return y},
 gM:function(a){return J.ag(this.a)},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return b instanceof H.bL&&J.v(this.a,b.a)},
 $isbj:1},
 a1:{"^":"c;a,b,c,d,e,f,r",
@@ -2349,7 +2349,7 @@ H.e(new W.bx(0,z.a,z.b,W.b9(d),!1),[H.z(z,0)]).aU()},"$3","ge3",6,0,86],
 B:function(a,b){J.fr(b)
 return b},
 ht:function(a,b){a.textContent=b},
-v:function(a,b,c){return J.rc(c==null?document:c,b)},
+u:function(a,b,c){return J.rc(c==null?document:c,b)},
 pA:[function(a,b){return J.iN(b)},"$1","gjE",2,0,50,15]}}],["","",,N,{"^":"",
 Do:function(){if($.o3)return
 $.o3=!0
@@ -3359,8 +3359,8 @@ if(z!=null)return z
 U.eS(a,"No valid value accessor for")},
 Gx:{"^":"a:0;a,b",
 $1:[function(a){var z=J.m(a)
-if(z.gS(a).u(0,C.Q))this.a.a=a
-else if(z.gS(a).u(0,C.O)||z.gS(a).u(0,C.T)||z.gS(a).u(0,C.V)||z.gS(a).u(0,C.U)){z=this.a
+if(z.gS(a).v(0,C.Q))this.a.a=a
+else if(z.gS(a).v(0,C.O)||z.gS(a).v(0,C.T)||z.gS(a).v(0,C.V)||z.gS(a).v(0,C.U)){z=this.a
 if(z.b!=null)U.eS(this.b,"More than one built-in value accessor matches")
 z.b=a}else{z=this.a
 if(z.c!=null)U.eS(this.b,"More than one custom value accessor matches")
@@ -4543,16 +4543,16 @@ if((x==null?a==null:x===a)&&N.bn(z.ry,b)){x=this.ch
 if(x===C.a){x=y.G(z.z,z.ry)
 this.ch=x}return x}return C.a},
 hk:function(a){var z=J.m(a)
-if(z.u(a,0))return this.c
-if(z.u(a,1))return this.d
-if(z.u(a,2))return this.e
-if(z.u(a,3))return this.f
-if(z.u(a,4))return this.r
-if(z.u(a,5))return this.x
-if(z.u(a,6))return this.y
-if(z.u(a,7))return this.z
-if(z.u(a,8))return this.Q
-if(z.u(a,9))return this.ch
+if(z.v(a,0))return this.c
+if(z.v(a,1))return this.d
+if(z.v(a,2))return this.e
+if(z.v(a,3))return this.f
+if(z.v(a,4))return this.r
+if(z.v(a,5))return this.x
+if(z.v(a,6))return this.y
+if(z.v(a,7))return this.z
+if(z.v(a,8))return this.Q
+if(z.v(a,9))return this.ch
 throw H.b(T.eh(a))},
 eg:function(){return 10}},
 vj:{"^":"c;h0:a<,ag:b<,ce:c<",
@@ -6241,7 +6241,7 @@ if(x==null)throw H.b(new L.N('The selector "'+H.f(a)+'" did not match any elemen
 $.x.toString
 J.rI(x,C.d)
 return x},
-v:function(a,b,c){var z,y,x,w,v,u
+u:function(a,b,c){var z,y,x,w,v,u
 z=E.qY(c)
 y=z[0]
 x=$.x
@@ -6444,7 +6444,7 @@ z={}
 y=J.cY(a).split(".")
 x=C.b.bO(y,0)
 if(y.length!==0){w=J.m(x)
-w=!(w.u(x,"keydown")||w.u(x,"keyup"))}else w=!0
+w=!(w.v(x,"keydown")||w.v(x,"keyup"))}else w=!0
 if(w)return
 if(0>=y.length)return H.d(y,-1)
 v=Y.vV(y.pop())
@@ -6489,7 +6489,7 @@ z.a=C.c.t(z.a,J.W(a,"."))}}},w0:{"^":"a:0;a,b",
 $1:function(a){var z,y
 z=this.a
 y=J.m(a)
-if(!y.u(a,z.b))if($.$get$qM().i(0,a).$1(this.b)===!0)z.a=C.c.t(z.a,y.t(a,"."))}},vZ:{"^":"a:0;a,b,c",
+if(!y.v(a,z.b))if($.$get$qM().i(0,a).$1(this.b)===!0)z.a=C.c.t(z.a,y.t(a,"."))}},vZ:{"^":"a:0;a,b,c",
 $1:[function(a){if(Y.w_(a)===this.a)this.c.aK(new Y.vY(this.b,a))},null,null,2,0,null,10,"call"]},vY:{"^":"a:1;a,b",
 $0:[function(){return this.a.$1(this.b)},null,null,0,0,null,"call"]}}],["","",,R,{"^":"",
 Dm:function(){if($.o9)return
@@ -6881,7 +6881,7 @@ z=this.a
 y=J.y(z)
 return y.U(z,y.gh(z)-1-b)}},
 hj:{"^":"c;lV:a<",
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return b instanceof H.hj&&J.v(this.a,b.a)},
 gM:function(a){var z=J.ag(this.a)
 if(typeof z!=="number")return H.A(z)
@@ -7924,7 +7924,7 @@ zC:{"^":"hI+zD;a,b,c,d,e,f,r"},
 AQ:{"^":"hI+AR;a,b,c,d,e,f,r"},
 eG:{"^":"AJ;a",
 gM:function(a){return(H.bw(this.a)^892482866)>>>0},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 if(this===b)return!0
 if(!(b instanceof P.eG))return!1
 return b.a===this.a}},
@@ -9253,7 +9253,7 @@ P.bJ(b,c,y,null,null,null)
 x=J.E(y)
 w=x.an(y,b)
 v=J.m(w)
-if(v.u(w,0))return new Uint8Array(0)
+if(v.v(w,0))return new Uint8Array(0)
 v=v.aM(w,3)
 if(typeof v!=="number"||Math.floor(v)!==v)H.t(P.a6("Invalid length "+H.f(v)))
 v=new Uint8Array(v)
@@ -9443,7 +9443,7 @@ y.a=", "}},
 ar:{"^":"c;"},
 "+bool":0,
 c_:{"^":"c;a,b",
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 if(!(b instanceof P.c_))return!1
 return this.a===b.a&&this.b===b.b},
 gM:function(a){var z=this.a
@@ -9492,7 +9492,7 @@ C:function(a,b){return this.a<b.gcw()},
 a2:function(a,b){return this.a>b.gcw()},
 as:function(a,b){return this.a>=b.gcw()},
 gfC:function(){return C.h.cI(this.a,1000)},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 if(!(b instanceof P.aa))return!1
 return this.a===b.a},
 gM:function(a){return this.a&0x1FFFFFFF},
@@ -9736,7 +9736,7 @@ l:function(a){return"null"}},
 aR:{"^":"c;"},
 "+num":0,
 c:{"^":";",
-u:function(a,b){return this===b},
+v:function(a,b){return this===b},
 gM:function(a){return H.bw(this)},
 l:["ky",function(a){return H.ej(this)}],
 fO:function(a,b){throw H.b(P.kD(this,b.gjf(),b.gjq(),b.gji(),null))},
@@ -9879,7 +9879,7 @@ if(y!=null)z=z+"?"+H.f(y)
 y=this.r
 if(y!=null)z=z+"#"+H.f(y)
 return z.charCodeAt(0)==0?z:z},
-u:function(a,b){var z,y,x,w
+v:function(a,b){var z,y,x,w
 if(b==null)return!1
 z=J.m(b)
 if(!z.$isdu)return!1
@@ -9995,7 +9995,7 @@ return a},
 lJ:function(a,b,c,d){var z,y,x,w
 if(a==null)return
 z=J.m(b)
-if(z.u(b,c))return""
+if(z.v(b,c))return""
 y=J.ao(a)
 if(y.q(a,b)===91){x=J.E(c)
 if(y.q(a,x.an(c,1))!==93)P.cb(a,b,"Missing end `]` to match `[` in host")
@@ -10197,10 +10197,10 @@ y=new P.yR(a,z)
 if(J.a8(J.F(a),2))z.$1("address is too short")
 x=[]
 w=b
-for(u=b,t=!1;s=J.E(u),s.C(u,c);u=J.W(u,1))if(J.fm(a,u)===58){if(s.u(u,b)){u=s.t(u,1)
+for(u=b,t=!1;s=J.E(u),s.C(u,c);u=J.W(u,1))if(J.fm(a,u)===58){if(s.v(u,b)){u=s.t(u,1)
 if(J.fm(a,u)!==58)z.$2("invalid start colon.",u)
 w=u}s=J.m(u)
-if(s.u(u,w)){if(t)z.$2("only one wildcard `::` is allowed",u)
+if(s.v(u,w)){if(t)z.$2("only one wildcard `::` is allowed",u)
 J.b1(x,-1)
 t=!0}else J.b1(x,y.$2(w,u))
 w=s.t(u,1)}if(J.F(x)===0)z.$1("too few parts")
@@ -10226,7 +10226,7 @@ if(typeof s!=="number")return H.A(s)
 if(!(u<s))break
 l=J.B(x,u)
 s=J.m(l)
-if(s.u(l,-1)){k=9-J.F(x)
+if(s.v(l,-1)){k=9-J.F(x)
 for(j=0;j<k;++j){if(m<0||m>=16)return H.d(n,m)
 n[m]=0
 s=m+1
@@ -10425,8 +10425,8 @@ H5:{"^":"aC;X:value=","%":"DeviceLightEvent"},
 ur:{"^":"a7;",
 h3:function(a,b){return a.querySelector(b)},
 h2:[function(a,b){return a.querySelector(b)},"$1","gar",2,0,9,33],
-v:function(a,b,c){return c==null?a.createElement(b):a.createElement(b,c)},
-dJ:function(a,b){return this.v(a,b,null)},
+u:function(a,b,c){return c==null?a.createElement(b):a.createElement(b,c)},
+dJ:function(a,b){return this.u(a,b,null)},
 "%":"XMLDocument;Document"},
 us:{"^":"a7;",
 h2:[function(a,b){return a.querySelector(b)},"$1","gar",2,0,9,33],
@@ -10438,7 +10438,7 @@ l:function(a){return String(a)},
 "%":"DOMException"},
 ux:{"^":"r;bI:height=,fK:left=,h7:top=,bW:width=",
 l:function(a){return"Rectangle ("+H.f(a.left)+", "+H.f(a.top)+") "+H.f(this.gbW(a))+" x "+H.f(this.gbI(a))},
-u:function(a,b){var z,y,x
+v:function(a,b){var z,y,x
 if(b==null)return!1
 z=J.m(b)
 if(!z.$isdp)return!1
@@ -10671,7 +10671,7 @@ sjF:function(a,b){a.textContent=b},
 "%":"Attr"},
 IE:{"^":"r;bI:height=,fK:left=,h7:top=,bW:width=",
 l:function(a){return"Rectangle ("+H.f(a.left)+", "+H.f(a.top)+") "+H.f(a.width)+" x "+H.f(a.height)},
-u:function(a,b){var z,y,x
+v:function(a,b){var z,y,x
 if(b==null)return!1
 z=J.m(b)
 if(!z.$isdp)return!1
@@ -10901,7 +10901,7 @@ return P.hP(this.a[b])}],
 k:["hw",function(a,b,c){if(typeof b!=="string"&&typeof b!=="number")throw H.b(P.a6("property is not a String or num"))
 this.a[b]=P.aF(c)}],
 gM:function(a){return 0},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return b instanceof P.cx&&this.a===b.a},
 fB:function(a){if(typeof a!=="string"&&typeof a!=="number")throw H.b(P.a6("property is not a String or num"))
 return a in this.a},
@@ -11240,10 +11240,10 @@ w=Y.bD(z,y,i4,i6,i5,i8,i9,x)
 Y.bO("FauxTweetComponent",0,i6)
 v=y.iU(w.e.d)
 x=J.o(y)
-u=x.v(y,v,"div")
+u=x.u(y,v,"div")
 y.j(u,"class","html body")
 t=y.m(u,"\n  ")
-s=x.v(y,u,"div")
+s=x.u(y,u,"div")
 y.j(s,"class","EmbeddedTweet js-clickToOpenTarget")
 y.j(s,"data-dt-abbr","%{number}%{symbol}")
 y.j(s,"data-dt-am","AM")
@@ -11268,32 +11268,32 @@ y.j(s,"data-twitter-event-id","2")
 y.j(s,"id","twitter-widget-2")
 y.j(s,"lang","en")
 r=y.m(s,"\n\n    ")
-q=x.v(y,s,"div")
+q=x.u(y,s,"div")
 y.j(q,"class","EmbeddedTweet-tweet")
 p=y.m(q,"\n      ")
-o=x.v(y,q,"blockquote")
+o=x.u(y,q,"blockquote")
 y.j(o,"class","Tweet h-entry js-tweetIdInfo subject expanded is-deciderHtmlWhitespace")
 y.j(o,"data-scribe","section:subject")
 y.j(o,"data-tweet-id","463440424141459456")
 n=y.m(o,"\n        ")
-m=x.v(y,o,"div")
+m=x.u(y,o,"div")
 y.j(m,"class","Tweet-header u-cf")
 l=y.m(m,"\n          ")
-k=x.v(y,m,"div")
+k=x.u(y,m,"div")
 y.j(k,"class","Tweet-brand u-floatRight")
 j=y.m(k,"\n            ")
-i=x.v(y,k,"span")
+i=x.u(y,k,"span")
 y.j(i,"class","u-hiddenInNarrowEnv")
 h=y.m(i,"\n    ")
-g=x.v(y,i,"a")
+g=x.u(y,i,"a")
 f=y.cW(g,"click",new D.GL(w))
 y.j(g,"class","FollowButton follow-button profile")
 y.j(g,"data-scribe","component:followbutton")
 y.j(g,"href","#")
 y.j(g,"role","button")
-e=x.v(y,g,"span")
+e=x.u(y,g,"span")
 y.j(e,"class","FollowButton-bird")
-d=x.v(y,e,"div")
+d=x.u(y,e,"div")
 y.j(d,"aria-label","")
 y.j(d,"class","Icon Icon--twitter ")
 y.j(d,"role","presentation")
@@ -11301,34 +11301,34 @@ y.j(d,"title","")
 c=y.m(g," Follow")
 b=y.m(i,"\n            ")
 a=y.m(k,"\n            ")
-a0=x.v(y,k,"span")
+a0=x.u(y,k,"span")
 y.j(a0,"class","u-hiddenInWideEnv")
-a1=x.v(y,a0,"a")
+a1=x.u(y,a0,"a")
 a2=y.cW(a1,"click",new D.GM(w))
 y.j(a1,"data-scribe","element:logo")
 y.j(a1,"href","#")
-a3=x.v(y,a1,"div")
+a3=x.u(y,a1,"div")
 y.j(a3,"aria-label","Get Twitter app")
 y.j(a3,"class","Icon Icon--twitter ")
 y.j(a3,"role","img")
 y.j(a3,"title","Get Twitter app")
 a4=y.m(k,"\n          ")
 a5=y.m(m,"\n\n          ")
-a6=x.v(y,m,"div")
+a6=x.u(y,m,"div")
 y.j(a6,"class","TweetAuthor")
 y.j(a6,"data-scribe","component:author")
 a7=y.m(a6,"\n            ")
-a8=x.v(y,a6,"a")
+a8=x.u(y,a6,"a")
 a9=y.cW(a8,"click",new D.GN(w))
 y.j(a8,"aria-label","Automatic Donald Trump")
 y.j(a8,"class","TweetAuthor-link Identity u-linkBlend")
 y.j(a8,"data-scribe","element:user_link")
 y.j(a8,"href","#")
 b0=y.m(a8,"\n              ")
-b1=x.v(y,a8,"span")
+b1=x.u(y,a8,"span")
 y.j(b1,"class","TweetAuthor-avatar Identity-avatar")
 b2=y.m(b1,"\n          ")
-b3=x.v(y,b1,"img")
+b3=x.u(y,b1,"img")
 y.j(b3,"alt","")
 y.j(b3,"class","Avatar")
 y.j(b3,"data-scribe","element:avatar")
@@ -11337,25 +11337,25 @@ y.j(b3,"data-src-2x","https://pbs.twimg.com/profile_images/1980294624/DJT_Headsh
 y.j(b3,"src","https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_bigger.jpg")
 b4=y.m(b1,"\n        ")
 b5=y.m(a8,"\n              ")
-b6=x.v(y,a8,"span")
+b6=x.u(y,a8,"span")
 y.j(b6,"class","TweetAuthor-name Identity-name customisable-highlight")
 y.j(b6,"data-scribe","element:name")
 y.j(b6,"title","Donald J. Trump")
 b7=y.m(b6,"Donald J. Trump")
 b8=y.m(a8,"\n              ")
-b9=x.v(y,a8,"span")
+b9=x.u(y,a8,"span")
 y.j(b9,"class","TweetAuthor-verifiedBadge")
 y.j(b9,"data-scribe","element:verified_badge")
-c0=x.v(y,b9,"div")
+c0=x.u(y,b9,"div")
 y.j(c0,"aria-label","Verified Account")
 y.j(c0,"class","Icon Icon--verified ")
 y.j(c0,"role","img")
 y.j(c0,"title","Verified Account")
-c1=x.v(y,b9,"b")
+c1=x.u(y,b9,"b")
 y.j(c1,"class","u-hiddenVisually")
 c2=y.m(c1,"\u2714")
 c3=y.m(a8,"\n              ")
-c4=x.v(y,a8,"span")
+c4=x.u(y,a8,"span")
 y.j(c4,"class","TweetAuthor-screenName Identity-screenName")
 y.j(c4,"data-scribe","element:screen_name")
 y.j(c4,"title","\u200e@realDonaldTrump")
@@ -11364,11 +11364,11 @@ c6=y.m(a8,"\n            ")
 c7=y.m(a6,"\n          ")
 c8=y.m(m,"\n\n        ")
 c9=y.m(o,"\n\n        ")
-d0=x.v(y,o,"div")
+d0=x.u(y,o,"div")
 y.j(d0,"class","Tweet-body e-entry-content")
 y.j(d0,"data-scribe","component:tweet")
 d1=y.m(d0,"\n          ")
-d2=x.v(y,d0,"p")
+d2=x.u(y,d0,"p")
 y.j(d2,"class","Tweet-text e-entry-title")
 y.j(d2,"dir","ltr")
 y.j(d2,"lang","en")
@@ -11378,17 +11378,17 @@ d5=y.m(d2,"\n            ")
 d6=y.m(d2,"\n            ")
 d7=y.m(d2,"")
 d8=y.m(d0,"\n\n\n          ")
-d9=x.v(y,d0,"div")
+d9=x.u(y,d0,"div")
 y.j(d9,"class","Tweet-metadata dateline")
 e0=y.m(d9,"\n\n\n            ")
-e1=x.v(y,d9,"a")
+e1=x.u(y,d9,"a")
 e2=y.cW(e1,"click",new D.GO(w))
 y.j(e1,"class","u-linkBlend u-url customisable-highlight long-permalink")
 y.j(e1,"data-datetime","2014-05-05T22:09:42+0000")
 y.j(e1,"data-scribe","element:full_timestamp")
 y.j(e1,"href","#")
 e3=y.m(e1,"\n\n\n              ")
-e4=x.v(y,e1,"time")
+e4=x.u(y,e1,"time")
 y.j(e4,"class","dt-updated")
 y.j(e4,"datetime","2014-05-05T22:09:42+0000")
 y.j(e4,"pubdate","")
@@ -11396,21 +11396,21 @@ e5=y.m(e4,"")
 e6=y.m(e1,"\n            ")
 e7=y.m(d9,"\n          ")
 e8=y.m(d0,"\n\n\n          ")
-e9=x.v(y,d0,"ul")
+e9=x.u(y,d0,"ul")
 y.j(e9,"aria-label","Tweet actions")
 y.j(e9,"class","Tweet-actions")
 y.j(e9,"data-scribe","component:actions")
 y.j(e9,"role","menu")
 f0=y.m(e9,"\n            ")
-f1=x.v(y,e9,"li")
+f1=x.u(y,e9,"li")
 y.j(f1,"class","Tweet-action")
 f2=y.m(f1,"\n              ")
-f3=x.v(y,f1,"a")
+f3=x.u(y,f1,"a")
 y.j(f3,"class","TweetAction TweetAction--reply web-intent")
 y.j(f3,"data-scribe","element:reply")
 y.j(f3,"href","https://twitter.com/intent/tweet?text=@realDonaldTrump%20Your%20auto-suggestion%20keyboard%20took%20over!%20http://filiph.github.io/markov/")
 f4=y.m(f3,"\n                ")
-f5=x.v(y,f3,"div")
+f5=x.u(y,f3,"div")
 y.j(f5,"aria-label","Reply")
 y.j(f5,"class","Icon Icon--reply TweetAction-icon")
 y.j(f5,"role","img")
@@ -11418,53 +11418,53 @@ y.j(f5,"title","Reply")
 f6=y.m(f3,"\n              ")
 f7=y.m(f1,"\n            ")
 f8=y.m(e9,"\n            ")
-f9=x.v(y,e9,"li")
+f9=x.u(y,e9,"li")
 y.j(f9,"class","Tweet-action")
 g0=y.m(f9,"\n              ")
-g1=x.v(y,f9,"a")
+g1=x.u(y,f9,"a")
 y.j(g1,"class","TweetAction TweetAction--retweet web-intent")
 y.j(g1,"data-scribe","element:retweet")
 y.j(g1,"href","https://twitter.com/intent/tweet?text=Have%20a%20look%20at%20the%20automatic%20Donald%20Trump!%20http://filiph.github.io/markov/%20So%20sad!")
 g2=y.m(g1,"\n                ")
-g3=x.v(y,g1,"div")
+g3=x.u(y,g1,"div")
 y.j(g3,"aria-label","Retweet")
 y.j(g3,"class","Icon Icon--retweet TweetAction-icon")
 y.j(g3,"role","img")
 y.j(g3,"title","Retweet")
 g4=y.m(g1," ")
-g5=x.v(y,g1,"span")
+g5=x.u(y,g1,"span")
 y.j(g5,"aria-hidden","true")
 y.j(g5,"class","TweetAction-stat")
 y.j(g5,"data-scribe","element:retweet_count")
 g6=y.m(g5,"1,461")
 g7=y.m(g1,"\n                ")
-g8=x.v(y,g1,"span")
+g8=x.u(y,g1,"span")
 y.j(g8,"class","u-hiddenVisually")
 g9=y.m(g8,"1,461 Retweets")
 h0=y.m(g1,"\n              ")
 h1=y.m(f9,"\n            ")
 h2=y.m(e9,"\n            ")
-h3=x.v(y,e9,"li")
+h3=x.u(y,e9,"li")
 y.j(h3,"class","Tweet-action")
 h4=y.m(h3,"\n              ")
-h5=x.v(y,h3,"a")
+h5=x.u(y,h3,"a")
 y.j(h5,"class","TweetAction TweetAction--heart web-intent")
 y.j(h5,"data-scribe","element:heart")
 y.j(h5,"href","https://twitter.com/intent/tweet?text=I%20like%20the%20automatic%20Donald%20J.%20Trump%20better%20than%20the%20real%20one.%20http://filiph.github.io/markov/")
 h6=y.m(h5,"\n                ")
-h7=x.v(y,h5,"div")
+h7=x.u(y,h5,"div")
 y.j(h7,"aria-label","Like")
 y.j(h7,"class","Icon Icon--heart TweetAction-icon")
 y.j(h7,"role","img")
 y.j(h7,"title","Like")
 h8=y.m(h5," ")
-h9=x.v(y,h5,"span")
+h9=x.u(y,h5,"span")
 y.j(h9,"aria-hidden","true")
 y.j(h9,"class","TweetAction-stat")
 y.j(h9,"data-scribe","element:heart_count")
 i0=y.m(h9,"1,599")
 i1=y.m(h5,"\n                ")
-i2=x.v(y,h5,"span")
+i2=x.u(y,h5,"span")
 y.j(i2,"class","u-hiddenVisually")
 w.bo([],[u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,e,d,c,b,a,a0,a1,a3,a4,a5,a6,a7,a8,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,e0,e1,e3,e4,e5,e6,e7,e8,e9,f0,f1,f2,f3,f4,f5,f6,f7,f8,f9,g0,g1,g2,g3,g4,g5,g6,g7,g8,g9,h0,h1,h2,h3,h4,h5,h6,h7,h8,h9,i0,i1,i2,y.m(i2,"1,599 likes"),y.m(h5,"\n              "),y.m(h3,"\n            "),y.m(e9,"\n          "),y.m(d0,"\n        "),y.m(o,"\n      "),y.m(q,"\n    "),y.m(s,"\n  "),y.m(u,"\n"),y.m(v,"\n")],[f,a2,a9,e2],[O.aT($.$get$pF(),w,null,g,null),O.aT($.$get$pJ(),w,null,a1,null),O.aT($.$get$pK(),w,null,a8,null),O.aT($.$get$pM(),w,null,e1,null)])
 return w},
@@ -11656,7 +11656,7 @@ else{x=Y.al(z,x)
 x=x.a.bg(x.b)
 if(typeof x!=="number")return x.t()
 x=z.hl(x+1)}return P.dr(C.a3.ct(z.c,y,x),0,null)},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 if(!J.m(b).$isjz)return this.kz(this,b)
 return J.v(this.b,b.b)&&J.v(this.c,b.c)&&J.v(this.a.a,b.a.a)},
 gM:function(a){return Y.ld.prototype.gM.call(this,this)},
@@ -11793,7 +11793,7 @@ tQ:{"^":"a:0;a",
 $1:function(a){return a.E(0,this.a)}},
 tR:{"^":"a:0;",
 $1:function(a){return a.N(0)}}}],["","",,V,{"^":"",he:{"^":"c;"}}],["","",,D,{"^":"",xJ:{"^":"c;",
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return!!J.m(b).$ishe&&J.v(this.a.a,b.a.a)&&J.v(this.b,b.b)},
 gM:function(a){var z,y
 z=J.ag(this.a.a)
@@ -11946,7 +11946,7 @@ if(y)H.t(H.T(a))
 return new R.lr(a,x,z.test(a))}}}}],["","",,G,{"^":"",hm:{"^":"c;mw:a<",
 gM:function(a){var z=this.a
 return X.D_(H.bh(z,new G.yz(),H.R(z,"j",0),null))},
-u:function(a,b){if(b==null)return!1
+v:function(a,b){if(b==null)return!1
 return this.gM(this)===J.ag(b)},
 l:function(a){var z=this.a
 return H.bh(z,new G.yA(),H.R(z,"j",0),null).K(0," ")}},yz:{"^":"a:0;",
@@ -11954,7 +11954,7 @@ $1:[function(a){return a.gbw()},null,null,2,0,null,128,"call"]},yA:{"^":"a:0;",
 $1:[function(a){return a.gbw()},null,null,2,0,null,37,"call"]}}],["","",,B,{"^":"",
 eT:function(){var z,y,x,w,v,u,t,s,r,q,p,o
 z=P.hv()
-if(z.u(0,$.mN))return $.hQ
+if(z.v(0,$.mN))return $.hQ
 $.mN=z
 y=$.$get$ev()
 x=$.$get$cF()
@@ -12163,7 +12163,7 @@ fP:function(){var z,y,x,w,v,u,t,s
 z=H.e([],[P.p])
 for(y=this.d,x=y.length,w=0,v=0;v<y.length;y.length===x||(0,H.aM)(y),++v){u=y[v]
 t=J.m(u)
-if(t.u(u,".")||t.u(u,""));else if(t.u(u,".."))if(z.length>0)z.pop()
+if(t.v(u,".")||t.v(u,""));else if(t.v(u,".."))if(z.length>0)z.pop()
 else ++w
 else z.push(u)}if(this.b==null)C.b.fF(z,0,P.dh(w,"..",!1,null))
 if(z.length===0&&this.b==null)z.push(".")
@@ -12336,12 +12336,12 @@ if(!C.c.fq(q,"\n"))z+="\n"
 z+=C.c.aM(" ",v)
 z+=C.c.aM("^",P.dN(p-v,1))
 return z.charCodeAt(0)==0?z:z},
-u:["kz",function(a,b){var z,y,x
+v:["kz",function(a,b){var z,y,x
 if(b==null)return!1
 if(!!J.m(b).$ises){z=this.a
 y=Y.al(z,this.b)
 x=b.a
-z=y.u(0,Y.al(x,b.b))&&Y.al(z,this.c).u(0,Y.al(x,b.c))}else z=!1
+z=y.v(0,Y.al(x,b.b))&&Y.al(z,this.c).v(0,Y.al(x,b.c))}else z=!1
 return z}],
 gM:function(a){var z,y,x,w
 z=this.a
@@ -12614,7 +12614,7 @@ $.n7=!0
 $.$get$u().a.k(0,C.a6,new R.w(C.em,C.d,new L.E1(),C.aX,null))
 F.qi()
 D.DG()},
-Jf:[function(a,b,c,d,e,f,g){var z,y,x,w,v,u
+Jf:[function(a,b,c,d,e,f,g){var z,y,x,w,v,u,t,s
 z=$.$get$pT()
 y=new L.zj(null,null,"AppComponent_1",5,$.$get$m4(),$.$get$m3(),C.l,[],[],null,null,C.j,null,null,null,null,null,null,null,null,null)
 y.y=new K.bF(y)
@@ -12622,10 +12622,12 @@ y.aD(!1)
 x=Y.bD(z,a,b,d,c,f,g,y)
 Y.bO("AppComponent",0,d)
 y=J.o(a)
-w=y.v(a,null,"span")
-v=a.m(w,"\n    - Loaded ")
-u=y.v(a,w,"strong")
-x.bo([w],[w,v,u,a.m(u,""),a.m(w," worth of Trump tweets.\n  ")],[],[])
+w=y.u(a,null,"span")
+v=a.m(w,"\n    ")
+u=y.u(a,w,"br")
+t=a.m(w,"- Loaded ")
+s=y.u(a,w,"strong")
+x.bo([w],[w,v,u,t,s,a.m(s,""),a.m(w," worth of Trump tweets.\n  ")],[],[])
 return x},"$7","CJ",14,0,4],
 Jg:[function(a,b,c,d,e,f,g){var z,y,x,w
 z=$.$get$pU()
@@ -12634,8 +12636,8 @@ y.y=new K.bF(y)
 x=Y.bD(z,a,b,d,c,f,g,y)
 Y.bO("AppComponent",0,d)
 y=J.o(a)
-w=y.v(a,null,"span")
-x.bo([w],[w,a.m(w,"\n    "),y.v(a,w,"br"),a.m(w,"- Building the Markov chain on your machine.\n  ")],[],[])
+w=y.u(a,null,"span")
+x.bo([w],[w,a.m(w,"\n    "),y.u(a,w,"br"),a.m(w,"- Building the Markov chain on your machine.\n  ")],[],[])
 return x},"$7","CK",14,0,4],
 Jh:[function(a,b,c,d,e,f,g){var z,y,x,w,v,u,t,s
 z=$.$get$pW()
@@ -12644,12 +12646,12 @@ y.y=new K.bF(y)
 x=Y.bD(z,a,b,d,c,f,g,y)
 Y.bO("AppComponent",0,d)
 y=J.o(a)
-w=y.v(a,null,"span")
+w=y.u(a,null,"span")
 v=a.m(w,"\n    ")
-u=y.v(a,w,"br")
+u=y.u(a,w,"br")
 t=a.m(w,"- ")
-s=y.v(a,w,"strong")
-x.bo([w],[w,v,u,t,s,a.m(s,"Done."),a.m(w," You can now use your short fingers to press the button above. Completely new Donald Trump-esque tweets will be generated locally on your machine.\n  ")],[],[])
+s=y.u(a,w,"strong")
+x.bo([w],[w,v,u,t,s,a.m(s,"Done."),a.m(w," Completely new Donald Trump-esque tweets will be generated locally on your machine.\n  ")],[],[])
 return x},"$7","CL",14,0,4],
 Ji:[function(a,b,c,d,e,f,g){var z,y,x,w,v
 z=$.$get$pX()
@@ -12658,8 +12660,8 @@ y.y=new K.bF(y)
 x=Y.bD(z,a,b,d,c,f,g,y)
 Y.bO("AppComponent",0,d)
 y=J.o(a)
-w=y.v(a,null,"span")
-v=y.v(a,w,"img")
+w=y.u(a,null,"span")
+v=y.u(a,w,"img")
 a.j(v,"alt","...working...")
 a.j(v,"src","images/spinner.gif")
 x.bo([w],[w,v],[],[])
@@ -12676,23 +12678,23 @@ w=Y.bD(z,y,a5,a7,a6,a9,b0,x)
 Y.bO("AppComponent",0,a7)
 v=y.iU(w.e.d)
 x=J.o(y)
-u=x.v(y,v,"div")
+u=x.u(y,v,"div")
 y.j(u,"class","min-height")
 t=y.m(u,"\n  ")
-s=x.v(y,u,"faux-tweet")
+s=x.u(y,u,"faux-tweet")
 r=y.m(u,"\n")
 q=y.m(v,"\n")
-p=x.v(y,v,"a")
+p=x.u(y,v,"a")
 o=y.cW(p,"click",new L.GK(w))
 y.j(p,"class","btn-big-red")
 n=y.m(p,"Make Donald Tweet Again")
 m=y.m(v,"\n")
-l=x.v(y,v,"code")
+l=x.u(y,v,"code")
 k=y.m(l,"\n  \xa0")
-j=x.v(y,l,"br")
+j=x.u(y,l,"br")
 i=y.m(l,"\n  Log:")
-h=x.v(y,l,"br")
-g=y.m(l,"\n  ")
+h=x.u(y,l,"br")
+g=y.m(l,"\n  - Initialized. You can now use your short fingers to press the button above but only pre-generated tweets will be shown.\n  ")
 f=y.dN(l)
 e=y.m(l,"\n  ")
 d=y.dN(l)
@@ -12849,7 +12851,7 @@ z=b===""
 y=C.c.ba(a,b)
 for(x=J.m(c);y!==-1;){w=C.c.fJ(a,"\n",y)+1
 v=y-w
-if(!x.u(c,v))u=z&&x.u(c,v+1)
+if(!x.v(c,v))u=z&&x.v(c,v+1)
 else u=!0
 if(u)return w
 y=C.c.aw(a,b,y+1)}return}}]]
@@ -12898,7 +12900,7 @@ J.r3=function(a,b){if(typeof a=="number"&&typeof b=="number")return a/b
 return J.E(a).jU(a,b)}
 J.v=function(a,b){if(a==null)return b==null
 if(typeof a!="object")return b!=null&&a===b
-return J.m(a).u(a,b)}
+return J.m(a).v(a,b)}
 J.r4=function(a,b){if(typeof a=="number"&&typeof b=="number")return a>=b
 return J.E(a).as(a,b)}
 J.D=function(a,b){if(typeof a=="number"&&typeof b=="number")return a>b
@@ -12930,7 +12932,7 @@ J.rb=function(a,b){return J.o(a).aV(a,b)}
 J.dQ=function(a,b){return J.y(a).I(a,b)}
 J.dR=function(a,b,c){return J.y(a).iQ(a,b,c)}
 J.rc=function(a,b){return J.o(a).dJ(a,b)}
-J.iD=function(a,b,c){return J.o(a).v(a,b,c)}
+J.iD=function(a,b,c){return J.o(a).u(a,b,c)}
 J.rd=function(a){return J.o(a).nb(a)}
 J.iE=function(a){return J.o(a).iV(a)}
 J.iF=function(a,b){return J.af(a).U(a,b)}
@@ -13830,7 +13832,7 @@ toString:function(){return"$receiver$"}}))},"lv","$get$lv",function(){return H.b
 try{null.$method$($argumentsExpr$)}catch(z){return z.message}}())},"lA","$get$lA",function(){return H.bk(H.ew(void 0))},"lB","$get$lB",function(){return H.bk(function(){var $argumentsExpr$='$arguments$'
 try{(void 0).$method$($argumentsExpr$)}catch(z){return z.message}}())},"ly","$get$ly",function(){return H.bk(H.lz(null))},"lx","$get$lx",function(){return H.bk(function(){try{null.$method$}catch(z){return z.message}}())},"lD","$get$lD",function(){return H.bk(H.lz(void 0))},"lC","$get$lC",function(){return H.bk(function(){try{(void 0).$method$}catch(z){return z.message}}())},"ke","$get$ke",function(){return P.l0(null)},"iS","$get$iS",function(){return $.$get$bq().$1("ApplicationRef#tick()")},"n3","$get$n3",function(){return $.$get$bq().$1("ChangeDetector#check(ascii id, bool throwOnChange)")},"r0","$get$r0",function(){return new O.Ce()},"jG","$get$jG",function(){return U.w5(C.ad)},"ai","$get$ai",function(){return new U.w2(H.c5(P.c,U.fZ))},"iX","$get$iX",function(){return new A.d2()},"mP","$get$mP",function(){return new O.zU()},"iY","$get$iY",function(){return new M.dl()},"ah","$get$ah",function(){return new L.ha($.$get$iX(),$.$get$iY(),H.c5(P.bj,O.aB),H.c5(P.bj,M.h4))},"iB","$get$iB",function(){return M.CQ()},"bq","$get$bq",function(){return $.$get$iB()===!0?M.GP():new R.Cd()},"cp","$get$cp",function(){return $.$get$iB()===!0?M.GQ():new R.Ck()},"mG","$get$mG",function(){return[null]},"eN","$get$eN",function(){return[null,null]},"e_","$get$e_",function(){return P.ac("%COMP%",!0,!1)},"kh","$get$kh",function(){return P.ac("^@([^:]+):(.+)",!0,!1)},"mQ","$get$mQ",function(){return P.C(["pan",!0,"panstart",!0,"panmove",!0,"panend",!0,"pancancel",!0,"panleft",!0,"panright",!0,"panup",!0,"pandown",!0,"pinch",!0,"pinchstart",!0,"pinchmove",!0,"pinchend",!0,"pinchcancel",!0,"pinchin",!0,"pinchout",!0,"press",!0,"pressup",!0,"rotate",!0,"rotatestart",!0,"rotatemove",!0,"rotateend",!0,"rotatecancel",!0,"swipe",!0,"swipeleft",!0,"swiperight",!0,"swipeup",!0,"swipedown",!0,"tap",!0])},"it","$get$it",function(){return["alt","control","meta","shift"]},"qM","$get$qM",function(){return P.C(["alt",new Y.Cl(),"control",new Y.Cm(),"meta",new Y.Cn(),"shift",new Y.Co()])},"hA","$get$hA",function(){return P.zp()},"jC","$get$jC",function(){return P.v_(null,null)},"mz","$get$mz",function(){return P.fO(null,null,null,null,null)},"cM","$get$cM",function(){return[]},"lO","$get$lO",function(){return P.ac("^[\\-\\.0-9A-Z_a-z~]*$",!0,!1)},"jd","$get$jd",function(){return{}},"jw","$get$jw",function(){return P.C(["animationend","webkitAnimationEnd","animationiteration","webkitAnimationIteration","animationstart","webkitAnimationStart","fullscreenchange","webkitfullscreenchange","fullscreenerror","webkitfullscreenerror","keyadded","webkitkeyadded","keyerror","webkitkeyerror","keymessage","webkitkeymessage","needkey","webkitneedkey","pointerlockchange","webkitpointerlockchange","pointerlockerror","webkitpointerlockerror","resourcetimingbufferfull","webkitresourcetimingbufferfull","transitionend","webkitTransitionEnd","speechchange","webkitSpeechChange"])},"bP","$get$bP",function(){return P.bm(self)},"hB","$get$hB",function(){return H.q5("_$dart_dartObject")},"hR","$get$hR",function(){return function DartObject(a){this.o=a}},"mm","$get$mm",function(){return[L.bE("textNode",55,null,null,null),L.bE("textNode",62,null,null,null)]},"ml","$get$ml",function(){return[]},"pF","$get$pF",function(){return O.aU($.$get$ah(),0,P.C(["class","FollowButton follow-button profile","data-scribe","component:followbutton","href","#","role","button"]),[],P.J())},"pJ","$get$pJ",function(){return O.aU($.$get$ah(),1,P.C(["data-scribe","element:logo","href","#"]),[],P.J())},"pK","$get$pK",function(){return O.aU($.$get$ah(),2,P.C(["aria-label","Automatic Donald Trump","class","TweetAuthor-link Identity u-linkBlend","data-scribe","element:user_link","href","#"]),[],P.J())},"pM","$get$pM",function(){return O.aU($.$get$ah(),3,P.C(["class","u-linkBlend u-url customisable-highlight long-permalink","data-datetime","2014-05-05T22:09:42+0000","data-scribe","element:full_timestamp","href","#"]),[],P.J())},"pV","$get$pV",function(){return Y.bC($.$get$ah(),C.n,[],P.J())},"mt","$get$mt",function(){return[null]},"ms","$get$ms",function(){return[L.bX(0,0)]},"pH","$get$pH",function(){return O.aU($.$get$ah(),0,P.J(),[C.S],P.J())},"pS","$get$pS",function(){return Y.bC($.$get$ah(),C.D,[],P.J())},"jb","$get$jb",function(){return P.ac("^\\S+$",!0,!1)},"kd","$get$kd",function(){return P.ac("[^\\s\\.!?,:]+",!0,!1)},"kc","$get$kc",function(){return P.ac("\\s+",!0,!1)},"ka","$get$ka",function(){return P.ac("[\\.!?,:]+",!0,!1)},"k8","$get$k8",function(){return P.ac("https?://[^\\s]+",!0,!1)},"kb","$get$kb",function(){return P.ac("\\.@[^\\s]+",!0,!1)},"k9","$get$k9",function(){return P.ac("\\d+[\\.,:]+\\d+",!0,!1)},"ho","$get$ho",function(){return P.ac("^[\\.!?,:\\-]+$",!0,!1)},"hn","$get$hn",function(){return P.ac('^(["]+|\\-\\-)$',!0,!1)},"q2","$get$q2",function(){return new F.j8($.$get$ev(),null)},"li","$get$li",function(){return new Z.x2("posix","/",C.aZ,P.ac("/",!0,!1),P.ac("[^/]$",!0,!1),P.ac("^/",!0,!1),null)},"ds","$get$ds",function(){return new T.z5("windows","\\",C.ee,P.ac("[/\\\\]",!0,!1),P.ac("[^/\\\\]$",!0,!1),P.ac("^(\\\\\\\\[^\\\\]+\\\\[^\\\\/]+|[a-zA-Z]:[/\\\\])",!0,!1),P.ac("^[/\\\\](?![/\\\\])",!0,!1))},"cF","$get$cF",function(){return new E.yT("url","/",C.aZ,P.ac("/",!0,!1),P.ac("(^[a-zA-Z][-+.a-zA-Z\\d]*://|[^/])$",!0,!1),P.ac("[a-zA-Z][-+.a-zA-Z\\d]*://[^/]*",!0,!1),P.ac("^/",!0,!1))},"ev","$get$ev",function(){return S.yk()},"u","$get$u",function(){var z=new R.cB(H.c5(null,R.w),H.c5(P.p,{func:1,args:[,]}),H.c5(P.p,{func:1,args:[,,]}),H.c5(P.p,{func:1,args:[,P.i]}),null,null)
 z.kZ(new G.wK())
-return z},"mZ","$get$mZ",function(){return P.l0(null)},"m2","$get$m2",function(){return[L.bE("directive",0,"tweet",null,null),null,L.bE("directive",2,"ngIf",null,null),L.bE("directive",3,"ngIf",null,null),L.bE("directive",4,"ngIf",null,null),L.bE("directive",5,"ngIf",null,null)]},"m1","$get$m1",function(){return[L.bX(0,0),L.bX(2,0),L.bX(3,0),L.bX(4,0),L.bX(5,0)]},"m4","$get$m4",function(){return[L.bE("textNode",3,null,null,null)]},"m3","$get$m3",function(){return[]},"m6","$get$m6",function(){return[]},"m5","$get$m5",function(){return[]},"m8","$get$m8",function(){return[]},"m7","$get$m7",function(){return[]},"ma","$get$ma",function(){return[]},"m9","$get$m9",function(){return[]},"pE","$get$pE",function(){return O.aU($.$get$ah(),0,P.J(),[C.S],P.J())},"pI","$get$pI",function(){return O.aU($.$get$ah(),1,P.C(["class","btn-big-red"]),[],P.J())},"pT","$get$pT",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pL","$get$pL",function(){return O.aU($.$get$ah(),2,P.J(),[C.u],P.J())},"pU","$get$pU",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pN","$get$pN",function(){return O.aU($.$get$ah(),3,P.J(),[C.u],P.J())},"pW","$get$pW",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pO","$get$pO",function(){return O.aU($.$get$ah(),4,P.J(),[C.u],P.J())},"pX","$get$pX",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pP","$get$pP",function(){return O.aU($.$get$ah(),5,P.J(),[C.u],P.J())},"pQ","$get$pQ",function(){return Y.bC($.$get$ah(),C.n,[],P.J())},"mr","$get$mr",function(){return[null]},"mq","$get$mq",function(){return[L.bX(0,0)]},"pG","$get$pG",function(){return O.aU($.$get$ah(),0,P.J(),[C.a6],P.J())},"pR","$get$pR",function(){return Y.bC($.$get$ah(),C.D,[],P.J())}])
+return z},"mZ","$get$mZ",function(){return P.l0(null)},"m2","$get$m2",function(){return[L.bE("directive",0,"tweet",null,null),null,L.bE("directive",2,"ngIf",null,null),L.bE("directive",3,"ngIf",null,null),L.bE("directive",4,"ngIf",null,null),L.bE("directive",5,"ngIf",null,null)]},"m1","$get$m1",function(){return[L.bX(0,0),L.bX(2,0),L.bX(3,0),L.bX(4,0),L.bX(5,0)]},"m4","$get$m4",function(){return[L.bE("textNode",5,null,null,null)]},"m3","$get$m3",function(){return[]},"m6","$get$m6",function(){return[]},"m5","$get$m5",function(){return[]},"m8","$get$m8",function(){return[]},"m7","$get$m7",function(){return[]},"ma","$get$ma",function(){return[]},"m9","$get$m9",function(){return[]},"pE","$get$pE",function(){return O.aU($.$get$ah(),0,P.J(),[C.S],P.J())},"pI","$get$pI",function(){return O.aU($.$get$ah(),1,P.C(["class","btn-big-red"]),[],P.J())},"pT","$get$pT",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pL","$get$pL",function(){return O.aU($.$get$ah(),2,P.J(),[C.u],P.J())},"pU","$get$pU",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pN","$get$pN",function(){return O.aU($.$get$ah(),3,P.J(),[C.u],P.J())},"pW","$get$pW",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pO","$get$pO",function(){return O.aU($.$get$ah(),4,P.J(),[C.u],P.J())},"pX","$get$pX",function(){return Y.bC($.$get$ah(),C.q,null,P.J())},"pP","$get$pP",function(){return O.aU($.$get$ah(),5,P.J(),[C.u],P.J())},"pQ","$get$pQ",function(){return Y.bC($.$get$ah(),C.n,[],P.J())},"mr","$get$mr",function(){return[null]},"mq","$get$mq",function(){return[L.bX(0,0)]},"pG","$get$pG",function(){return O.aU($.$get$ah(),0,P.J(),[C.a6],P.J())},"pR","$get$pR",function(){return Y.bC($.$get$ah(),C.D,[],P.J())}])
 I=I.$finishIsolateConstructor(I)
 $=new I()
 init.metadata=["o","v",null,"parent","self","zone","stackTrace","error","_",C.a,"event","_renderer","arg1","f","value","element","e","fn","arg","data","p","_elementRef","_asyncValidators","callback","control","obj","k","type","_validators","arg0","result","b","typeOrFunc","relativeSelectors","valueAccessors","duration","arg2","t","keys","_templateRef","viewContainer","templateRef","invocation","_ngEl","string","_viewContainer","s","testability","line","_iterableDiffers","x","findInAncestors","flags","signature","a","each","factories","init","elem","componentRef","arg3","arg4","arrayOfErrors","_ref","dynamicComponentLoader","appRef","injector","res","ref","minLength","err","trace","query","_lexer","providedReflector","key","_cdr","object","provider","aliasInstance","selector","_injector","hostProtoViewRef","_compiler","_viewManager","d","_directiveResolver","_pipeResolver","_appId","validator","c","_registry","asyncValidators","cd","browserDetails","_ngZone","exception","reason","_document","_eventManager","sharedStylesHost","rootRenderer","plugins","_zone","doc","_packagePrefix","req","timestamp","sender","_parent","specification","zoneValues","_keyValueDiffers","errorCode","numberOfArguments","theError","theStackTrace","eventObj","st","isolate","encodedComponent","byteString","closure","xhr","time","captureThis","arguments","sswitch","token","message","match","position","length","validators","thisArg","o1","o2","o3","o4","o5","o6","o7","o8","o9","o10","bindingString","exactMatch","allowNonElementNodes",!0,"ngSwitch","_differs","didWork_","maxLength","animate"]
