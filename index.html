@@ -4,7 +4,22 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta property="og:title" content="Automatic Donald Trump">
+    <meta property="og:url" content="http://filiph.github.io/markov/">
+    <meta property="og:description" content="What can Donald Trump teach you about Markov chains">
+    <meta property="og:image" content="http://filiph.github.io/markov/images/screenshot.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@filiphracek">
+    <meta name="twitter:title" content="Automatic Donald Trump">
+    <meta name="twitter:description" content="What can Donald Trump teach you about Markov chains">
+    <meta name="twitter:image" content="http://filiph.github.io/markov/images/screenshot.png">
+
     <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="highlight/styles/default.css">
+    <script async="" src="highlight/highlight.pack.js"></script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
     <script defer="" src="main.dart.js"></script>
     
@@ -22,11 +37,213 @@
           </div>
         </div>
       </trump-o-mat>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<hr>
+
+<h2>Donald Trump's smart keyboard</h2>
+
+<p>I always wanted to implement a Markov chain. They are used all over: in compression, speech recognition, telco error correction, Bayesian inference, economics, genetics, biology. They run your smartphone's writing suggestions. Hell, even Google's PageRank (the thing that kind of pays my bills) is defined using a Markov chain.</p>
+
+<p>Markov's idea is actually pretty simple — but its simplicity is often obstructed by thick layers of mathematical formulas and formal definitions. Few people actually grok it.</p>
+
+<p>This is my shot at explaining Markov chains in a palatable and maybe even enjoyable way. How do I want to make this article enjoyable? Two things:</p>
+
+<ul>
+<li>Actual code.</li>
+<li>Donald Trump.</li>
+</ul>
+
+
+<p>Since people encounter Markov chains most often when writing text on a mobile device (it's the auto-suggestions of next words when you're typing), I'll drop most of the generality of Markov's original idea and I'll focus solely on text here. (Specifically, Donald Trump's tweets.) We can always generalize later on.</p>
+
+<p>To be clear, if you understand markov chains of even implemented one, this article is of no use to you. You can invest the saved time to procrastinate with the virtual Donald Trump above.</p>
+
+<p>Note: Since I started hacking on this last weekend I have learned about others with very similar ideas. There's a twitter bot called <a href="https://twitter.com/DemocracySim">Bob Markov</a> that posts Trump-esque tweets every 15 minutes. There's a <a href="http://fusion.net/story/244366/donald-trump-markov-chain-bot/">Donald Trump chatbot</a>. There's a <a href="http://trump.frost.works/">Trump speech generator</a>. Seems like Trump has at least one positive impact: it reminds people of a Markov chain, and some of those then go ahead and implement one.</p>
+
+<h2>Intuition about Markov chains</h2>
+
+<p>Let's have a look at the following source text:</p>
+
+<blockquote><p>tick tock tick tock tick tock tick tock</p></blockquote>
+
+<p>(Disclaimer: this is not a Donald Trump tweet.)</p>
+
+<p>We can say the following:</p>
+
+<ul>
+<li>When the current word is "tick", the next word will be "tock" 100% of the time.</li>
+<li>When the current word is "tock", the next word will be "tick" 75% of the time, and it will be a newline the rest (25%) of the time.</li>
+</ul>
+
+
+<p><strong>That's it!</strong> We have now defined a Markov chain.</p>
+
+<p>From this definition of probabilities, we can now help users with writing similar text, or we can generate completely new texts autonomously.</p>
+
+<ul>
+<li>Let's start with "tock".</li>
+<li>The generator knows the probabilities of the possible next words after "tock": 75% "tick", 25% newline.</li>
+<li>If we are writing an auto-suggesting keyboard, we can now place "tick" prominently and something like "enter" less prominently.</li>
+<li>If we're building a text generator, we pick the next word randomly. Either completely randomly (50% tick, 50% newline) or in proportion (tick has 3 times the chance than newline). We're using the second approach here, as it generates text that is closer to the original.</li>
+<li>Let's say we ended up with "tick". The generated string is now "tock tick".</li>
+<li>Next, we take the last word ("tick") and repeat for that word.</li>
+<li>The probabilities for "tick" are simple (100% "tock"). If we are writing an auto-suggestion keyboard, we can even insert "tock" without asking the user (if that's the kind of domain we're in).</li>
+<li>We now have "tock tick tock".</li>
+<li>Repeat.</li>
+</ul>
+
+
+<h2>Order</h2>
+
+<p>Markov chains have very short memory. That's actually an important property of theirs: the so called Markov property. In the example above, the next word only depends on the current word, and nothing else. The words before that are irrelevant — the system has no memory of them.</p>
+
+<p>With the tick tock example, that's all you really need. For other types of texts, though, you might want the system to remember more than one word.</p>
+
+<p>In that case, we say that the Markov chain is of order <em>m</em>. As far as I know, smart keyboards mostly use Markov chains of order 2, meaning that the next word is suggested based on the current word and the one word before it.</p>
+
+<p>You can of course go with higher orders, but the internal representation of the chain then grows exponentially, and you also start to basically copy the source texts word for word (unless you have a very very large source text).</p>
+
+<h2>Donald J. Trump-o-mat</h2>
+
+<p>Ok, now for the fun part.</p>
+
+<p>See, "tick tock..." is not the only possible source text. Smart keyboards use probabilities derived from huge corpora of real-life text. (They also modify the probabilities according to what <em>you</em> type, so that the keyboard adapts to you.)</p>
+
+<p>I don't have a huge corpus of English text but I do have access to something much weirder and funnier: Donald Trump's twitter account.</p>
+
+<p>The fun part about Markov chains is that despite their simplicity and short memory, they can still generate believable texts (or other simulations). The web app I made is merely a 2nd order Markov chain generated from about 11 thousand of Donald Trump's tweets. Unless by chance, none of the tweets this web app generates are actual tweets made by Donald Trump. But every set of 3 words (tokens, actually) that you see in these generated tweets have been at least once uttered by @realDonaldTrump.</p>
+
+<h2>Implementation details</h2>
+
+<p>I've made a <a href="https://pub.dartlang.org/packages/markov">tiny Dart package</a> for Markov chains. Here it is in action:</p>
+
+<pre><code>// Take POSIX standard input stream (or any other byte
+// stream) and use it as source text.
+var chain = await stdin
+    .transform(new Utf8Decoder())
+    .transform(new LineSplitter())
+    .pipe(new MarkovChainGenerator(2));
+</code></pre>
+
+<p>The two <code>transform()</code> calls are there to convert the byte stream to a stream of (unicode) lines. Then this stream is piped to a Markov chain generator of order 2. This returns a Future of a MarkovChain instance, which we happily <code>await</code> (if you're not familiar with async/await, this means the following code is basically a callback that is executed only after the Markov chain generator is finished).</p>
+
+<p>Now, we can generate new text from the chain like so:</p>
+
+<pre><code>// Generate 20 words.
+var tokens = chain.generate().take(20).toList();
+
+// Format them and print them.
+print(format(tokens));
+</code></pre>
+
+<p>Internally, the Markov chain is a simple object with some methods and one large HashMap that's defined like so:</p>
+
+<pre><code>Map&lt;TokenSequence, ProbabilityDistribution&lt;String&gt;&gt; _edges;
+</code></pre>
+
+<p>See, Markov chains can also be seen as directed graphs with edges between different states. The edges can carry different weight (like with the 75% and 25% in the example above).</p>
+
+<p><img src="images/markov-trump-graph.png" alt="Markov chain graph visualization"></p>
+
+<p>For us, the current state is a <strong>sequence of tokens</strong> (words or punctuation) because we need to accommodate for Markov chains of orders higher than 1. So the TokenSequence holds the last <em>m</em> number of words uttered (where <em>m</em> is the order of the Markov chain). Since we're using a <em>Hash</em> Map to go from current state to the next token, we need to make sure that sequences of tokens have meaningful hashCodes (unique and based on all of the tokens). Here's the code in question:</p>
+
+<pre><code>class TokenSequence {
+  final Queue&lt;Token&gt; _tokens;
+
+  // ...
+
+  @override
+  int get hashCode =&gt;
+      hashObjects(_tokens.map((token) =&gt; token.string));
+}
+</code></pre>
+
+<p>Normally, each new Dart object gets a unique hash. Here we're overriding this behavior and saying that sequences with the same tokens (as defined by the tokens' string representations) should be considered same.</p>
+
+<p>The <code>hashObjects</code> function is taken from the Google-maintained <a href="https://pub.dartlang.org/packages/quiver">quiver</a> package. (It's similar to <a href="https://github.com/google/guava">guava</a> in many respects.) This function takes an iterable of objects, their hashes, and creates a combined hash using <a href="https://en.wikipedia.org/wiki/Jenkins_hash_function">Jenkins</a> hash function.</p>
+
+<p>Let's say the starting sequence is <code>{"I", "am"}</code> (Markov chain of order 2, so two tokens). Statistics tell us that when Donald Trump says "I am" on Twitter, he likely continues with <code>"self"</code> (so he can say "I am self-funding ...") or <code>"the"</code> (so he can say "I am the only candidate that ...").</p>
+
+<p>This information is stored in the HashMap above so that internally, here's how we find a random next state:</p>
+
+<pre><code>var distribution = _edges[state];
+var nextWord = distribution.pick(_random);
+</code></pre>
+
+<p>The <code>distribution.pick()</code> method does a "wheel of fortune" thing (picks a token randomly, keeping the probabilities observed in the source text). We inject <code>_random</code> in case we'd like to use a seeded random generator (better for testing).</p>
+
+<p>Once we have the next word, we can go to the next iteration.</p>
+
+<pre><code>state = new TokenSequence.fromPrevious(state, nextToken);
+</code></pre>
+
+<p>What this does is that it takes the current sequence of tokens, like <code>{"I", "am"}</code>, the next token, like <code>the</code>, and creates the following state, which in this example would be <code>{"am", "the"}</code>. This sequence can then serve as a basis for another probability distribution, and another token, and another state.</p>
+
+<h3>Tokenization</h3>
+
+<p>One implementation detail that I had to solve quickly (but satisfactorily) was tokenization of tweets (splitting the string into meaningful words and punctuation). The first implementation was as simple as <code>line.split(" ")</code> and it worked quite well. But it was, as Mr Trump would say, "Stupid!" Here's the current implementation:</p>
+
+<pre><code>Iterable&lt;String&gt; _tokenizeLine(String line) sync* {
+  var scanner = new StringScanner(line.trim());
+  while (!scanner.isDone) {
+    if (scanner.scan(_link) ||
+        scanner.scan(_twitterMention) ||
+        scanner.scan(_numberOrTime) ||
+        scanner.scan(_word) ||
+        scanner.scan(_punctuation)) {
+      yield scanner.lastMatch[0];
+    }
+    // Skip whitespace if any.
+    scanner.scan(_whiteSpace);
+  }
+  // Add a newline at the end.
+  yield "\n";
+}
+</code></pre>
+
+<p>This uses the <a href="https://pub.dartlang.org/packages/string_scanner">string_scanner</a> package (also maintained by Google) and also the sync generator language feature (<code>yield</code>) which I got used to in Python and I use it in Dart even more.</p>
+
+<p>We're scanning for specific strings like links and mentions first, so that for example <code>.@BarackObama</code> isn't tokenized as <code>{".", "@BarackObama"}</code> (we want it together).</p>
+
+<p>Discounting that, it's as simple as scanning for words or punctuation, and ignoring possible whitespace in between, until we've scanned each line.</p>
+
+<h3>Building in the browser</h3>
+
+<p>Another implementation details is performance in the browser. What we're doing is downloading a ~1MB text file, splitting it into lines, and feeding it — one line at a time — to the Markov chain generator. That's a lot of work for a web app.</p>
+
+<p>We could do this in a separate isolate (and, therefore, thread) but that would be quite a bit of additional work.</p>
+
+<p>A much simpler approach is to make sure we never block the UI thread for too long. Here's how:</p>
+
+<pre><code>Stream&lt;String&gt; _splitToLines(String file) async* {
+  StringScanner scanner = new StringScanner(file);
+  int lineCount = 0;
+  while (!scanner.isDone) {
+    if (scanner.scan(_line)) {
+      yield scanner.lastMatch[0];
+    }
+    // Scan and discard any newlines.
+    scanner.scan("\n");
+    lineCount += 1;
+    if (lineCount % maxLinesPerFrame == 0) {
+      // Give the UI thread a break.
+      await window.animationFrame;
+    }
+  }
+}
+</code></pre>
+
+<p>It would be a pain without async/await. But with it, it's super simple to wait for the next animationFrame every few iterations.</p>
+
+<h2>Conclusion</h2>
+
+<p>I think choosing Donald Trump's tweets as the source text was a great decision. Not only is it opportune (for readers from the distant future: this code and article is being written at a time in which it's unsure whether or not Donald Trump — yes, <em>that</em> Donald Trump – will be or won't be the president of the United States) but more importantly, Mr. Trump's utterances are so idiosyncratic that, for many of the auto-generated tweets, you could probably tell they were supposed to be written by Donald Trump even if I didn't provide the visual hints.</p>
+
+<p>Also, his tweets are a little retarded by themselves, so the additional retardation (which stems solely from the short memory of the algorithm) fits quite well.  <br>
+To be clear, though, the library can work with any input material. I was initially planning to also include automatic Jesus (quotes from Bible) and/or automatic Hillary Clinton. The possibility to upload your own arbitrary text would also be awesome and shouldn't be too hard. Hopefully, I'll have the time to do this during March or April. In the meantime, you can always use the <a href="https://github.com/filiph/markov/blob/master/example/stdin_example.dart">command line version</a> of the generator that comes with the Dart package.</p>
+
+<p class="align-right">— Filip Hráček</p>
+
     </div>
   
 

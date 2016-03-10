@@ -3,11 +3,34 @@
   max-width: 520px;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: "Lucida Grande", Arial, sans-serif;
   font-weight: bold;
   letter-spacing: -1px;
+}
+
+h1 {
   text-align: center;
+}
+
+h2 {
+  margin-top: 2em;
+}
+
+p, li {
+  line-height: 1.4;
+}
+
+.align-right {
+  text-align: right;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+img {
+  max-width: 100%;
 }
 
 .loading {
