@@ -20,9 +20,9 @@ class ProbabilityDistribution<T> {
         "records through record().");
   }
 
-  void record(T word) {
+  void record(T word, {int count: 1}) {
     _records.putIfAbsent(word, () => 0);
-    _records[word] += 1;
-    total += 1;
+    _records[word] += count;
+    total += count;
   }
 }
