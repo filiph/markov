@@ -136,10 +136,14 @@ var tokens = chain.generate().take(20).toList();
 print(format(tokens));
 </code></pre>
 
+<p>The <code>format()</code> function takes the tokens (such as <code>great</code>, <code>again</code> or <code>!</code>) and use their metadata to string them together so that you get valid English syntax (<code>great again!</code> instead of <code>great again !</code>).</p>
+
 <p>Internally, the Markov chain is a simple object with some methods and one large HashMap that's defined like so:</p>
 
 <pre><code>Map&lt;TokenSequence, ProbabilityDistribution&lt;String&gt;&gt; _edges;
 </code></pre>
+
+<p>You can read the type definition with generics like this: "the object maps from <code>TokenSequence</code>s to a <code>ProbabilityDistribution</code>s of <code>String</code>s". That's actually very close to what it does. It keeps track of probability distributions of the next strings (words) after each sequence of tokens.</p>
 
 <p>See, Markov chains can also be seen as directed graphs with edges between different states. The edges can carry different weight (like with the 75% and 25% in the example above).</p>
 
@@ -164,13 +168,55 @@ print(format(tokens));
 
 <p>Let's say the starting sequence is <code>{"I", "am"}</code> (Markov chain of order 2, so two tokens). Statistics tell us that when Donald Trump says "I am" on Twitter, he likely continues with <code>"self"</code> (so he can say "I am self-funding ...") or <code>"the"</code> (so he can say "I am the only candidate that ...").</p>
 
-<p>This information is stored in the HashMap above so that internally, here's how we find a random next state:</p>
+<p>This information is stored in the <code>HashMap</code> above so that internally, here's how we find a random next state:</p>
 
 <pre><code>var distribution = _edges[state];
 var nextWord = distribution.pick(_random);
 </code></pre>
 
-<p>The <code>distribution.pick()</code> method does a "wheel of fortune" thing (picks a token randomly, keeping the probabilities observed in the source text). We inject <code>_random</code> in case we'd like to use a seeded random generator (better for testing).</p>
+<p>The <code>distribution.pick()</code> method does a "wheel of fortune" thing (picks a token randomly, keeping the probabilities observed in the source text). We inject <code>_random</code> (defined elsewhere) in case we'd like to use a seeded random generator (better for testing). Here is the <code>ProbabilityDistribution</code> class in its entirety:</p>
+
+<pre><code>class ProbabilityDistribution&lt;T&gt; {
+  final Map&lt;T, int&gt; _records = new Map();
+  int total = 0;
+
+  T pick(Random random) {
+    int randomNumber = random.nextInt(total);
+    int currentIndex = 0;
+    for (T key in _records.keys) {
+      int currentCount = _records[key];
+      if (randomNumber &lt; currentIndex + currentCount) {
+        return key;
+      }
+      currentIndex += currentCount;
+    }
+  }
+
+  void record(T word, {int count: 1}) {
+    _records.putIfAbsent(word, () =&gt; 0);
+    _records[word] += count;
+    total += count;
+  }
+}
+</code></pre>
+
+<p>The class uses generics so that we can later easily change from <code>String</code> to anything else.</p>
+
+<p>The <code>record()</code> function takes a word, adds it to the internal <code>Map</code> if neccessary, and updates it's count and the total count. So, when done, we have something like this:</p>
+
+<ul>
+<li>Probability distribution for <code>{"I", "am"}</code>:
+
+<ul>
+<li><code>"self"</code> - 6</li>
+<li><code>"the"</code> - 4</li>
+<li>total - 10</li>
+</ul>
+</li>
+</ul>
+
+
+<p>The <code>pick()</code> function first generates a random integer from zero to <code>total</code>. This is where the "needle" stops on the circumference of the imaginary wheel of fortune. Next, we go key by key, claiming the proportional part of the wheel's circumference, and seeing if the random number is inside that range.</p>
 
 <p>Once we have the next word, we can go to the next iteration.</p>
 
@@ -207,11 +253,11 @@ var nextWord = distribution.pick(_random);
 
 <p>Discounting that, it's as simple as scanning for words or punctuation, and ignoring possible whitespace in between, until we've scanned each line.</p>
 
-<h3>Building in the browser</h3>
+<h3>Building the Markov chain in the browser</h3>
 
 <p>Another implementation details is performance in the browser. What we're doing is downloading a ~1MB text file, splitting it into lines, and feeding it — one line at a time — to the Markov chain generator. That's a lot of work for a web app.</p>
 
-<p>We could do this in a separate isolate (and, therefore, thread) but that would be quite a bit of additional work.</p>
+<p>We could do this in a separate isolate (and, therefore, thread) but that would be quite a bit of additional work. This is a weekend project, not a business.</p>
 
 <p>A much simpler approach is to make sure we never block the UI thread for too long. Here's how:</p>
 
@@ -233,7 +279,7 @@ var nextWord = distribution.pick(_random);
 }
 </code></pre>
 
-<p>It would be a pain without async/await. But with it, it's super simple to wait for the next animationFrame every few iterations.</p>
+<p>It would be a pain without async/await. But with it, it's super simple to wait for the next <code>animationFrame</code> every few iterations.</p>
 
 <h2>Conclusion</h2>
 
