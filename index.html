@@ -39,7 +39,6 @@
       </trump-o-mat>
 
 <hr>
-
 <h2>Donald Trump's smart keyboard</h2>
 
 <p>I always wanted to implement a Markov chain. They are used all over: in compression, speech recognition, telco error correction, Bayesian inference, economics, genetics, biology. They run your smartphone's writing suggestions. Hell, even Google's PageRank (the thing that kind of pays my bills) is defined using a Markov chain.</p>
@@ -143,7 +142,7 @@ print(format(tokens));
 <pre><code>Map&lt;TokenSequence, ProbabilityDistribution&lt;String&gt;&gt; _edges;
 </code></pre>
 
-<p>You can read the type definition with generics like this: "the object maps from <code>TokenSequence</code>s to a <code>ProbabilityDistribution</code>s of <code>String</code>s". That's actually very close to what it does. It keeps track of probability distributions of the next strings (words) after each sequence of tokens.</p>
+<p>You can read the type definition with generics like this: "the object maps from <code>TokenSequence</code>s to <code>ProbabilityDistribution</code>s of <code>String</code>s". That's actually very close to what it does. It keeps track of probability distributions of the next strings (words) after each sequence of tokens.</p>
 
 <p>See, Markov chains can also be seen as directed graphs with edges between different states. The edges can carry different weight (like with the 75% and 25% in the example above).</p>
 
@@ -174,7 +173,7 @@ print(format(tokens));
 var nextWord = distribution.pick(_random);
 </code></pre>
 
-<p>The <code>distribution.pick()</code> method does a "wheel of fortune" thing (picks a token randomly, keeping the probabilities observed in the source text). We inject <code>_random</code> (defined elsewhere) in case we'd like to use a seeded random generator (better for testing). Here is the <code>ProbabilityDistribution</code> class in its entirety:</p>
+<p>The <code>distribution.pick()</code> method does a "wheel of fortune" thing (picks a token randomly, keeping the probabilities observed in the source text). We inject <code>_random</code> (defined elsewhere) in case we'd like to use a seeded random generator (better for testing). Here is the <code>ProbabilityDistribution</code> class in its entirety (explained below):</p>
 
 <pre><code>class ProbabilityDistribution&lt;T&gt; {
   final Map&lt;T, int&gt; _records = new Map();
@@ -285,15 +284,14 @@ var nextWord = distribution.pick(_random);
 
 <p>I think choosing Donald Trump's tweets as the source text was a great decision. Not only is it opportune (for readers from the distant future: this code and article is being written at a time in which it's unsure whether or not Donald Trump — yes, <em>that</em> Donald Trump – will be or won't be the president of the United States) but more importantly, Mr. Trump's utterances are so idiosyncratic that, for many of the auto-generated tweets, you could probably tell they were supposed to be written by Donald Trump even if I didn't provide the visual hints.</p>
 
-<p>Also, his tweets are a little retarded by themselves, so the additional retardation (which stems solely from the short memory of the algorithm) fits quite well.  <br>
-To be clear, though, the library can work with any input material. I was initially planning to also include automatic Jesus (quotes from Bible) and/or automatic Hillary Clinton. The possibility to upload your own arbitrary text would also be awesome and shouldn't be too hard. Hopefully, I'll have the time to do this during March or April. In the meantime, you can always use the <a href="https://github.com/filiph/markov/blob/master/example/stdin_example.dart">command line version</a> of the generator that comes with the Dart package.</p>
+<p>Also, his tweets are a little <del>retarded</del> incoherent by themselves, so the additional <del>retardation</del> incoherency (which stems solely from the short memory of the algorithm) fits quite well.</p>
+
+<p>To be clear, though, the library can work with any input material. I was initially planning to also include automatic Jesus (quotes from Bible) and/or automatic Hillary Clinton. The possibility to upload your own arbitrary text would also be awesome and shouldn't be too hard. Hopefully, I'll have the time to do this during March or April. In the meantime, you can always use the <a href="https://github.com/filiph/markov/blob/master/example/stdin_example.dart">command line version</a> of the generator that comes with the Dart package.</p>
 
 <p class="align-right">— <a href="https://plus.google.com/u/0/+filiphracek/posts" rel="author">Filip Hráček</a></p>
 
 
 <p>(Discuss on <a href="https://plus.google.com/u/0/+filiphracek/posts/QVfyoQafpCQ">Google+</a>, <a href="https://www.reddit.com/r/programming/comments/49v6gw/i_grokked_markov_chains_by_building_the_automatic/">Reddit</a>, <a href="https://twitter.com/filiphracek/status/708021106188288001">Twitter</a>.)</p>
-
-
     </div>
   
 
