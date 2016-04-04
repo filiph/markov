@@ -19,7 +19,6 @@
 
     <link rel="stylesheet" href="highlight/styles/default.css">
     <script async="" src="highlight/highlight.pack.js"></script>
-    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
     <script defer="" src="main.dart.js"></script>
     
@@ -125,6 +124,8 @@ var chain = await stdin
     .pipe(new MarkovChainGenerator(2));
 </code></pre>
 
+<p>(Not sure what Dart is? <a href="https://www.dartlang.org/">Click here</a>. The syntax should feel familiar, though.)</p>
+
 <p>The two <code>transform()</code> calls are there to convert the byte stream to a stream of (unicode) lines. Then this stream is piped to a Markov chain generator of order 2. This returns a Future of a MarkovChain instance, which we happily <code>await</code> (if you're not familiar with async/await, this means the following code is basically a callback that is executed only after the Markov chain generator is finished).</p>
 
 <p>Now, we can generate new text from the chain like so:</p>
@@ -143,7 +144,7 @@ print(format(tokens));
 <pre><code>Map&lt;TokenSequence, ProbabilityDistribution&lt;String&gt;&gt; _edges;
 </code></pre>
 
-<p>You can read the type definition with generics like this: "the object maps from <code>TokenSequence</code>s to <code>ProbabilityDistribution</code>s of <code>String</code>s". That's actually very close to what it does. It keeps track of probability distributions of the next strings (words) after each sequence of tokens.</p>
+<p>You can read the type definition with generics like this: "the object <code>Map</code>s from <code>TokenSequence</code>s to <code>ProbabilityDistribution</code>s of <code>String</code>s". That's actually very close to what it does. It keeps track of probability distributions of the next strings (words) after each sequence of tokens.</p>
 
 <p>See, Markov chains can also be seen as directed graphs with edges between different states. The edges can carry different weight (like with the 75% and 25% in the example above).</p>
 
@@ -174,6 +175,8 @@ print(format(tokens));
 var nextWord = distribution.pick(_random);
 </code></pre>
 
+<p>The first line just looks up the <code>ProbabilityDistribution</code> associated with the current <code>state</code>.</p>
+
 <p>The <code>distribution.pick()</code> method does a "wheel of fortune" thing (picks a token randomly, keeping the probabilities observed in the source text). We inject <code>_random</code> (defined elsewhere) in case we'd like to use a seeded random generator (better for testing). Here is the <code>ProbabilityDistribution</code> class in its entirety (explained below):</p>
 
 <pre><code>class ProbabilityDistribution&lt;T&gt; {
@@ -202,7 +205,7 @@ var nextWord = distribution.pick(_random);
 
 <p>The class uses generics so that we can later easily change from <code>String</code> to anything else.</p>
 
-<p>The <code>record()</code> function takes a word, adds it to the internal <code>Map</code> if neccessary, and updates it's count and the total count. So, when done, we have something like this:</p>
+<p>The <code>record()</code> function takes a word, adds it to the internal <code>Map</code> if neccessary, and updates its count and the total count. So, when done, we have something like this:</p>
 
 <ul>
 <li>Probability distribution for <code>{"I", "am"}</code>:
@@ -255,7 +258,7 @@ var nextWord = distribution.pick(_random);
 
 <h3>Building the Markov chain in the browser</h3>
 
-<p>Another implementation details is performance in the browser. What we're doing is downloading a ~1MB text file, splitting it into lines, and feeding it — one line at a time — to the Markov chain generator. That's a lot of work for a web app.</p>
+<p>Another implementation 'detail' is performance in the browser. What we're doing is downloading a ~1MB text file, splitting it into lines, and feeding it — one line at a time — to the Markov chain generator, which then processes it. That's a lot of work for a web app.</p>
 
 <p>We could do this in a separate isolate (and, therefore, thread) but that would be quite a bit of additional work. This is a weekend project, not a business.</p>
 
@@ -279,7 +282,7 @@ var nextWord = distribution.pick(_random);
 }
 </code></pre>
 
-<p>It would be a pain without async/await. But with it, it's super simple to wait for the next <code>animationFrame</code> every few iterations.</p>
+<p>Each <code>maxLinesPerFrame</code> (defined elsewhere), we wait for the next animation frame. It would be a huge pain without async/await. But with it, it's super simple to await the next <code>window.animationFrame</code> every few iterations.</p>
 
 <h2>Conclusion</h2>
 
