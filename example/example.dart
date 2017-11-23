@@ -11,7 +11,7 @@ import 'package:markov/markov.dart';
 main() async {
   print("Provide source text by stdin. For best result, provide a large number "
       "of tweets, one per line.\n\n"
-      "  \$ dart stdin_example.dart < tweets.txt\n"
+      "  \$ dart example.dart < tweets.txt\n"
       "  Here's your generated tweet.");
 
   // Take POSIX standard input stream (or any other byte
