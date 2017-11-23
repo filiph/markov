@@ -11,7 +11,7 @@ class TokenSequence {
   TokenSequence(Iterable<Token> tokens) : _tokens = new Queue.from(tokens);
 
   factory TokenSequence.fromPrevious(TokenSequence previous, Token nextToken) {
-    var nextTokens = new Queue.from(previous._tokens);
+    var nextTokens = new Queue<Token>.from(previous._tokens);
     nextTokens.removeFirst();
     nextTokens.addLast(nextToken);
     return new TokenSequence(nextTokens);
@@ -24,7 +24,8 @@ class TokenSequence {
   int get hashCode => hashObjects(_tokens.map((token) => token.string));
 
   @override
-  operator ==(TokenSequence other) => hashCode == other.hashCode;
+  operator ==(Object other) =>
+      other is TokenSequence && hashCode == other.hashCode;
 
   String toString() => _tokens.map((t) => t.string).join(" "); // TODO
 }
