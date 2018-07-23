@@ -3,9 +3,10 @@
 
 library markov.test;
 
+import 'dart:async';
+
 import 'package:markov/markov.dart';
 import 'package:test/test.dart';
-import 'dart:async';
 
 void main() {
   group('Converter', () {
@@ -15,28 +16,32 @@ void main() {
     group('"tick tock" of first order', () {
       setUp(() async {
         converter = new MarkovChainGenerator(1);
-        converter.addStream(new Stream.fromIterable([
-          "tick tock tick tock tick tock tick tock",
-          "tick tock tick tock tick tock"
+        await converter.addStream(new Stream.fromIterable([
+          'tick tock tick tock tick tock tick tock',
+          'tick tock tick tock tick tock'
         ]));
         chain = await converter.close();
       });
 
       test('always generates "tock" after "tick"', () {
-        var start = new TokenSequence.fromString("tick");
-        for (int i = 0; i < 1000; i++) {
-          expect(chain.generate(state: start).first.string, "tock");
+        final start = new TokenSequence.fromString('tick');
+        for (var i = 0; i < 1000; i++) {
+          expect(chain.generate(initialState: start).first.string, 'tock');
         }
       });
       test('generates "tick" or EOL after "tock"', () {
-        var start = new TokenSequence.fromString("tock");
-        bool generatedAtLeastOneTick = false;
-        bool generatedAtLeastOneEOL = false;
-        for (int i = 0; i < 1000; i++) {
-          var string = chain.generate(state: start).first.string;
-          expect(string, anyOf("tick", "\n"));
-          if (string == "tick") generatedAtLeastOneTick = true;
-          if (string == "\n") generatedAtLeastOneEOL = true;
+        final start = new TokenSequence.fromString('tock');
+        var generatedAtLeastOneTick = false;
+        var generatedAtLeastOneEOL = false;
+        for (var i = 0; i < 1000; i++) {
+          final string = chain.generate(initialState: start).first.string;
+          expect(string, anyOf('tick', '\n'));
+          if (string == 'tick') {
+            generatedAtLeastOneTick = true;
+          }
+          if (string == '\n') {
+            generatedAtLeastOneEOL = true;
+          }
         }
         expect(generatedAtLeastOneTick, true);
         expect(generatedAtLeastOneEOL, true);
