@@ -1,5 +1,7 @@
 # markov
 
+[![Build Status](https://travis-ci.org/filiph/markov.svg?branch=master)](https://travis-ci.org/filiph/markov)
+
 A simple Markov chain implementation. Generates words and punctuation.
 Tuned for tweets.
 
