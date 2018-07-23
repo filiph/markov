@@ -2,6 +2,7 @@
 .packages
 .pub/
 build/
+.dart_tool
 packages
 pubspec.lock
 

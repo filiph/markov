@@ -6,38 +6,43 @@ import 'package:markov/src/probability_distribution.dart';
 import 'package:markov/src/token.dart';
 import 'package:markov/src/token_sequence.dart';
 
+/// A markov chain generator. Feed it with [record] and let it generate
+/// new outputs with [generate].
 class MarkovChain {
-  static const totalCountKey = " "; // Space is an invalid token.
-  final Map<TokenSequence, ProbabilityDistribution<String>> _edges = new Map();
+  final Map<TokenSequence, ProbabilityDistribution<String>> _edges = {};
 
+  /// The order of the Markov chain, i.e. the length of its memory.
   final int order;
 
   final Random _random;
 
+  /// Generates a Markov chain of order [order].
+  ///
+  /// Optionally takes [randomSeed] for the random number generator.
   MarkovChain(this.order, {int randomSeed}) : _random = new Random(randomSeed);
 
-  Map get asMap => _edges;
+  /// Generates an infinite iterable of tokens.
+  Iterable<Token> generate({TokenSequence initialState}) sync* {
+    var state = initialState ?? new TokenSequence(
+        new List.filled(order, '\n').map((string) => new Token(string)));
 
-  Iterable<Token> generate({TokenSequence state: null}) sync* {
-    if (state == null) {
-      state = new TokenSequence(
-          new List.filled(order, "\n").map((string) => new Token(string)));
-    }
-
+    // ignore: literal_only_boolean_expressions
     while (true) {
-      ProbabilityDistribution<String> distribution = _edges[state];
-      String nextWord = distribution.pick(_random);
-      var nextToken = new Token(nextWord);
+      final distribution = _edges[state];
+      final nextWord = distribution.pick(_random);
+      final nextToken = new Token(nextWord);
       yield nextToken;
       state = new TokenSequence.fromPrevious(state, nextToken);
     }
   }
 
+  /// Record an instance of continuation from [precedent] to the next [word].
   void record(TokenSequence precedent, String word) {
-    ProbabilityDistribution<String> distribution =
+    final distribution =
         _edges.putIfAbsent(precedent, () => new ProbabilityDistribution());
     distribution.record(word);
   }
 
-  toJson() => {"edges": _edges, "order": order};
+  /// Return JSON representation of this Markov chain.
+  Map<String, Object> toJson() => {'edges': _edges, 'order': order};
 }

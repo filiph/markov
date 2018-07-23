@@ -1,8 +1,12 @@
 # Changelog
 
+## 2.0.0
+
+- Upgrade to Dart 2
+
 ## 1.0.0
 
-- Go from Conveter to a StreamConsumer
+- Go from Converter to a StreamConsumer
 
 ## 0.0.1
 
