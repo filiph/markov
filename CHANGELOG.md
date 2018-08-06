@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Fix SDK constraints
+
 ## 2.0.0
 
 - Upgrade to Dart 2
