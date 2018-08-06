@@ -2,12 +2,12 @@ name: markov
 description:
   A simple Markov chain implementation. Generates words and
   punctuation. Tuned for tweets.
-version: 2.0.0
+version: 2.0.1
 author: Filip Hracek <filip.hracek@gmail.com>
 homepage: https://github.com/filiph/markov
 
 environment:
-  sdk: ">=1.24.0 <3.0.0"
+  sdk: ">=2.0.0-dev <3.0.0"
 
 dependencies:
  string_scanner: ^1.0.3
