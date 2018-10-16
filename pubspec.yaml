@@ -2,7 +2,7 @@ name: markov
 description:
   A simple Markov chain implementation. Generates words and
   punctuation. Tuned for tweets.
-version: 2.0.1
+version: 2.0.1+1
 author: Filip Hracek <filip.hracek@gmail.com>
 homepage: https://github.com/filiph/markov
 
