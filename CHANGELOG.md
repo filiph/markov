@@ -1,3 +1,7 @@
+## 2.0.1+2
+
+- Apply formatting fixes
+
 ## 2.0.1+1
 
 - Stop CI testing with the dev branch of Dart 
