@@ -11,17 +11,17 @@ import 'package:string_scanner/string_scanner.dart';
 /// Generates a [MarkovChain] of [order] from a string stream. Can be
 /// used as a [StreamConsumer] (e.g. in [Stream.pipe]).
 class MarkovChainGenerator extends StreamConsumer<String> {
-  static final _word = new RegExp(r'[^\s\.!?,:]+');
+  static final _word = RegExp(r'[^\s\.!?,:]+');
 
-  static final _whiteSpace = new RegExp(r'\s+');
+  static final _whiteSpace = RegExp(r'\s+');
 
-  static final _punctuation = new RegExp(r'[\.!?,:]+');
+  static final _punctuation = RegExp(r'[\.!?,:]+');
 
-  static final _link = new RegExp(r'https?://[^\s]+');
+  static final _link = RegExp(r'https?://[^\s]+');
 
-  static final _twitterMention = new RegExp(r'\.@[^\s]+');
+  static final _twitterMention = RegExp(r'\.@[^\s]+');
 
-  static final _numberOrTime = new RegExp(r'\d+[\.,:]+\d+');
+  static final _numberOrTime = RegExp(r'\d+[\.,:]+\d+');
 
   /// The order of the generated Markov chain.
   final int order;
@@ -36,16 +36,16 @@ class MarkovChainGenerator extends StreamConsumer<String> {
 
   /// Constructs a generator of [MarkovChain] of order [order].
   MarkovChainGenerator(this.order) {
-    _chain = new MarkovChain(order);
-    _stringTokens = new Queue.from(new List.filled(order, '\n'));
+    _chain = MarkovChain(order);
+    _stringTokens = Queue.from(List.filled(order, '\n'));
   }
 
   @override
   Future addStream(Stream<String> stream) => stream.forEach((line) async {
         _stringTokens.addAll(_tokenizeLine(line));
         while (_stringTokens.length >= order + 1) {
-          final precedent = new TokenSequence(
-              _stringTokens.take(order).map((string) => new Token(string)));
+          final precedent = TokenSequence(
+              _stringTokens.take(order).map((string) => Token(string)));
           _chain.record(precedent, _stringTokens.skip(order).first);
           _stringTokens.removeFirst();
         }

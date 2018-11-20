@@ -24,12 +24,12 @@ class ProbabilityDistribution<T> {
       }
       currentIndex += currentCount;
     }
-    throw new StateError("Total doesn't add up. Make sure to only add new "
+    throw StateError("Total doesn't add up. Make sure to only add new "
         'records through record().');
   }
 
   /// Add an instance of type [T].
-  void record(T word, {int count: 1}) {
+  void record(T word, {int count = 1}) {
     _records.putIfAbsent(word, () => 0);
     _records[word] += count;
     _total += count;

@@ -15,8 +15,8 @@ void main() {
 
     group('"tick tock" of first order', () {
       setUp(() async {
-        converter = new MarkovChainGenerator(1);
-        await converter.addStream(new Stream.fromIterable([
+        converter = MarkovChainGenerator(1);
+        await converter.addStream(Stream.fromIterable([
           'tick tock tick tock tick tock tick tock',
           'tick tock tick tock tick tock'
         ]));
@@ -24,13 +24,13 @@ void main() {
       });
 
       test('always generates "tock" after "tick"', () {
-        final start = new TokenSequence.fromString('tick');
+        final start = TokenSequence.fromString('tick');
         for (var i = 0; i < 1000; i++) {
           expect(chain.generate(initialState: start).first.string, 'tock');
         }
       });
       test('generates "tick" or EOL after "tock"', () {
-        final start = new TokenSequence.fromString('tock');
+        final start = TokenSequence.fromString('tock');
         var generatedAtLeastOneTick = false;
         var generatedAtLeastOneEOL = false;
         for (var i = 0; i < 1000; i++) {

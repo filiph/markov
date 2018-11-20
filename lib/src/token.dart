@@ -4,9 +4,9 @@ library markov.token;
 ///
 /// This implementation assumes a word-like token.
 class Token {
-  static final _noSpaceBefore = new RegExp(r'^[\.!?,:\-]+$');
+  static final _noSpaceBefore = RegExp(r'^[\.!?,:\-]+$');
 
-  static final _noSpaceAfter = new RegExp(r'^(["]+|\-\-)$');
+  static final _noSpaceAfter = RegExp(r'^(["]+|\-\-)$');
 
   /// The string representation of the token.
   final String string;
@@ -25,7 +25,7 @@ class Token {
   factory Token(String string) {
     final skipsSpaceBefore = _noSpaceBefore.hasMatch(string);
     final skipsSpaceAfter = _noSpaceAfter.hasMatch(string);
-    return new Token._(string, skipsSpaceBefore, skipsSpaceAfter);
+    return Token._(string, skipsSpaceBefore, skipsSpaceAfter);
   }
 
   Token._(this.string, this.skipsSpaceBefore, this.skipsSpaceAfter);

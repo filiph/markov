@@ -19,27 +19,27 @@ class MarkovChain {
   /// Generates a Markov chain of order [order].
   ///
   /// Optionally takes [randomSeed] for the random number generator.
-  MarkovChain(this.order, {int randomSeed}) : _random = new Random(randomSeed);
+  MarkovChain(this.order, {int randomSeed}) : _random = Random(randomSeed);
 
   /// Generates an infinite iterable of tokens.
   Iterable<Token> generate({TokenSequence initialState}) sync* {
-    var state = initialState ?? new TokenSequence(
-        new List.filled(order, '\n').map((string) => new Token(string)));
+    var state = initialState ??
+        TokenSequence(List.filled(order, '\n').map((string) => Token(string)));
 
     // ignore: literal_only_boolean_expressions
     while (true) {
       final distribution = _edges[state];
       final nextWord = distribution.pick(_random);
-      final nextToken = new Token(nextWord);
+      final nextToken = Token(nextWord);
       yield nextToken;
-      state = new TokenSequence.fromPrevious(state, nextToken);
+      state = TokenSequence.fromPrevious(state, nextToken);
     }
   }
 
   /// Record an instance of continuation from [precedent] to the next [word].
   void record(TokenSequence precedent, String word) {
     final distribution =
-        _edges.putIfAbsent(precedent, () => new ProbabilityDistribution());
+        _edges.putIfAbsent(precedent, () => ProbabilityDistribution());
     distribution.record(word);
   }
 

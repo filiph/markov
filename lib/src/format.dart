@@ -8,7 +8,7 @@ import 'package:markov/src/token.dart';
 /// with ` ` (space). There are special cases, like with `.` (period),
 /// which is placed just after the previous word, without the space.
 String format(List<Token> tokens) {
-  final buffer = new StringBuffer();
+  final buffer = StringBuffer();
   var previousSkipsSpaceAfter = true;
   for (var token in tokens) {
     if (!previousSkipsSpaceAfter && !token.skipsSpaceBefore) {
